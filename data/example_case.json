@@ -1,0 +1,54 @@
+{
+  "case_info": {
+    "case_number": "2023-PIC-001",
+    "accident_date": "2023-05-15",
+    "accident_location": "南京市鼓楼区中山路",
+    "injured_party": "张三",
+    "injured_age": 35,
+    "urban_resident": true,
+    "occupation": "公司职员"
+  },
+  "medical_expenses": {
+    "hospital_bills": [12000, 8000, 5000],
+    "medication_costs": [3000, 2000],
+    "rehabilitation_costs": [6000]
+  },
+  "loss_of_income": {
+    "monthly_salary": 9000,
+    "work_days_lost": 120,
+    "daily_salary": 300
+  },
+  "care_expenses": {
+    "nursing_days": 45,
+    "nursing_level": "普通"
+  },
+  "other_expenses": {
+    "transportation_days": 30,
+    "hospitalization_days": 25,
+    "nutrition_days": 90
+  },
+  "disability_assessment": {
+    "disability_level": 8,
+    "assessment_date": "2023-08-20",
+    "assessment_institution": "南京市司法鉴定中心"
+  },
+  "dependents": [
+    {
+      "name": "张小小",
+      "relationship": "子女",
+      "age": 8,
+      "supporters": 2
+    },
+    {
+      "name": "张父",
+      "relationship": "父亲",
+      "age": 68,
+      "supporters": 3
+    }
+  ],
+  "legal_costs": {
+    "lawyer_fee": 5000,
+    "court_fee": 200,
+    "assessment_fee": 1500
+  }
+}

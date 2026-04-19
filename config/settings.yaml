@@ -1,0 +1,76 @@
+# 人身伤害赔偿计算器配置
+
+# 赔偿标准配置
+compensation_standards:
+  # 住院伙食补助费（元/天）
+  hospital_meal_subsidy: 100
+
+  # 营养费（元/天）
+  nutrition_fee: 50
+
+  # 交通费（元/天）
+  transportation_fee: 20
+
+  # 护理费标准（元/天）
+  nursing_fee:
+    普通: 150
+    一级: 225
+    特级: 300
+
+# 收入标准（年）
+income_standards:
+  # 上一年度城镇居民人均可支配收入（元）
+  urban_disposable_income: 50000
+
+  # 上一年度农村居民人均纯收入（元）
+  rural_net_income: 20000
+
+  # 上一年度城镇居民人均消费支出（元）
+  urban_consumption_expenditure: 30000
+
+  # 上一年度农村居民人均消费支出（元）
+  rural_consumption_expenditure: 15000
+
+# 伤残等级系数（1-10级）
+disability_coefficients:
+  1: 1.0
+  2: 0.9
+  3: 0.8
+  4: 0.7
+  5: 0.6
+  6: 0.5
+  7: 0.4
+  8: 0.3
+  9: 0.2
+  10: 0.1
+
+# 精神损害抚慰金标准（元）
+mental_distress_compensation:
+  无伤残: 5000
+  七至十级: 10000
+  五至六级: 20000
+  三至四级: 30000
+  一至二级: 50000
+
+# 计算参数
+calculation_parameters:
+  # 残疾赔偿金计算年限
+  disability_compensation_years:
+    60岁以下: 20
+    60-75岁: "20-(年龄-60)"
+    75岁以上: 5
+
+  # 被扶养人生活费计算年限
+  dependent_support_years:
+    未成年人: "18-年龄"
+    成年人: 20
+    老年人: 20
+
+# 地区调整系数（可选）
+regional_adjustment:
+  北京: 1.2
+  上海: 1.2
+  广东: 1.1
+  江苏: 1.1
+  浙江: 1.1
+  其他: 1.0
