@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personal-injury-compensation"
+version = "0.1.0"
+description = "面向律师团队的人身损害赔偿案件协作与试算系统"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic>=1.14,<2",
+  "fastapi>=0.115,<1",
+  "psycopg[binary]>=3.2,<4",
+  "pydantic>=2.10,<3",
+  "sqlalchemy>=2.0,<3",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+collector = [
+  "beautifulsoup4>=4.12,<5",
+  "chardet>=5.2,<6",
+  "openpyxl>=3.1,<4",
+  "pandas>=2.2,<4",
+  "pdfplumber>=0.11,<1",
+  "pypdf>=5,<7",
+  "requests>=2.32,<3",
+]
+test = [
+  "httpx2>=2.10,<3",
+  "pytest>=8,<10",
+]
+
+[project.scripts]
+personal-injury-import = "personal_injury.cli.commands:import_legacy_command"
+personal-injury-import-collector = "personal_injury.cli.commands:import_collector_command"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

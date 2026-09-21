@@ -97,6 +97,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.*
+!.env.example
 .venv
 env/
 venv/
@@ -137,6 +139,11 @@ cython_debug/
 # Data files
 data_collection.log
 data_collection_status.json
+data/cases/
+data/reports/
+data/source_archive/
+data/*.db
+data/*.db-*
 人身损害赔偿统计数据_*.xlsx
 人身损害赔偿统计数据_*.csv
 output/

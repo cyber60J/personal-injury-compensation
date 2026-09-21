@@ -1,4 +1,6 @@
-# 人身伤害赔偿计算器配置
+# 人身损害赔偿计算器示例配置
+# 当前代码通过 CompensationCalculator(config={...}) 接收配置，本文件不会自动加载。
+# 所有金额都必须替换为案件适用地区、适用年度的官方数据或经律师确认的标准。
 
 # 赔偿标准配置
 compensation_standards:
@@ -22,14 +24,12 @@ income_standards:
   # 上一年度城镇居民人均可支配收入（元）
   urban_disposable_income: 50000
 
-  # 上一年度农村居民人均纯收入（元）
-  rural_net_income: 20000
-
   # 上一年度城镇居民人均消费支出（元）
   urban_consumption_expenditure: 30000
 
-  # 上一年度农村居民人均消费支出（元）
-  rural_consumption_expenditure: 15000
+  # “上一年度”通常指一审法庭辩论终结时的上一统计年度
+  statistical_year: null
+  source_url: null
 
 # 伤残等级系数（1-10级）
 disability_coefficients:
@@ -44,13 +44,10 @@ disability_coefficients:
   9: 0.2
   10: 0.1
 
-# 精神损害抚慰金标准（元）
+# 精神损害抚慰金没有全国统一固定档位，默认不自动计入
 mental_distress_compensation:
-  无伤残: 5000
-  七至十级: 10000
-  五至六级: 20000
-  三至四级: 30000
-  一至二级: 50000
+  auto_include: false
+  note: "按侵权过错、行为情节、损害后果、责任能力和当地生活水平等个案复核"
 
 # 计算参数
 calculation_parameters:
@@ -63,14 +60,7 @@ calculation_parameters:
   # 被扶养人生活费计算年限
   dependent_support_years:
     未成年人: "18-年龄"
-    成年人: 20
-    老年人: 20
-
-# 地区调整系数（可选）
-regional_adjustment:
-  北京: 1.2
-  上海: 1.2
-  广东: 1.1
-  江苏: 1.1
-  浙江: 1.1
-  其他: 1.0
+    成年人: "仅在无劳动能力且无其他生活来源时计算20年"
+    60-75岁: "20-(年龄-60)"
+    75岁以上: 5
+  multiple_dependents_annual_cap: "完整的上一年度城镇居民人均消费支出额（不乘伤残系数）"

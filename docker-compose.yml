@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: personal_injury
+      POSTGRES_USER: personal_injury
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请在.env中设置POSTGRES_PASSWORD}
+    volumes:
+      - personal_injury_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U personal_injury -d personal_injury"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    environment:
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: personal_injury
+      DB_NAME: personal_injury
+      APP_ENV: ${APP_ENV:-development}
+      ALLOW_DEMO_STANDARDS: ${ALLOW_DEMO_STANDARDS:-true}
+      AUTO_CREATE_SCHEMA: "false"
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      ALLOW_OPEN_BOOTSTRAP: ${ALLOW_OPEN_BOOTSTRAP:-true}
+      BOOTSTRAP_TOKEN: ${BOOTSTRAP_TOKEN:-}
+      TRUSTED_HOSTS: ${TRUSTED_HOSTS:-localhost,127.0.0.1}
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:8000}
+      DOCS_ENABLED: ${DOCS_ENABLED:-true}
+      STATISTICAL_ARCHIVE_DIR: /app/data/source_archive
+    volumes:
+      - ./data/source_archive:/app/data/source_archive:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8000:8000"
+
+volumes:
+  personal_injury_pgdata:

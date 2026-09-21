@@ -1,0 +1,25 @@
+{
+  "source_url": "https://data.stats.gov.cn/dg/website/publicrelease/web/external/stream/esData",
+  "method": "POST",
+  "request_json": {
+    "cid": "5c072e1073514e448de4132760308fcf",
+    "indicatorIds": [
+      "dd28563a8af84935bc8a010abf8b772c"
+    ],
+    "daCatalogId": "",
+    "das": [
+      {
+        "text": "北京市",
+        "value": "110000000000"
+      }
+    ],
+    "showType": "1",
+    "rootId": "c4d82af16c3d4f0cb4f09d4af7d5888e",
+    "dts": [
+      "2024YY"
+    ]
+  },
+  "retrieved_at": "2026-09-19T03:16:40.318402+00:00",
+  "response_file": "beijing_2024_income.json",
+  "note": "Unmodified official response. Tests replay locally; this confirms Beijing 2024 only, not completeness across provinces or years."
+}

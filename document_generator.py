@@ -319,7 +319,7 @@ def main():
             try:
                 total = float(data["total_compensation"])
                 data["total_compensation_chinese"] = generator.number_to_chinese(total)
-            except:
+            except (TypeError, ValueError):
                 data["total_compensation_chinese"] = "（金额转换失败）"
 
             content = generator.generate_document("compensation_agreement", data)
